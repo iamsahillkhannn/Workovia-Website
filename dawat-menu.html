@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dawat-e-Kashmir | Kashmiri Wazwan Brand Menu</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0c0f14;
+  --surface:#151922;
+  --card:#1a202c;
+  --border:rgba(255,255,255,0.1);
+  --gold:#d4af37;
+  --gold-glow:rgba(212,175,55,0.25);
+  --text:#f8fafc;
+  --mute:#94a3b8;
+}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  overflow-x:hidden;
+}
+
+/* Header */
+.menuHeader{
+  position:sticky;top:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 24px;
+  background:rgba(12,15,20,0.85);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.brandTitle{
+  display:flex;align-items:center;gap:12px;
+}
+.brandBadge{
+  width:36px;height:36px;border-radius:10px;
+  background:radial-gradient(circle at 30% 30%, #eab308 0%, #b45309 100%);
+  display:grid;place-items:center;color:#000;font-weight:800;font-size:1.1rem;
+  box-shadow:0 0 16px var(--gold-glow);
+}
+.brandText h1{
+  font-size:0.95rem;font-weight:700;letter-spacing:0.02em;color:#fff;
+}
+.brandText p{
+  font-size:0.75rem;color:var(--gold);font-weight:500;letter-spacing:0.05em;text-transform:uppercase;
+}
+
+.menuNavActions{
+  display:flex;align-items:center;gap:12px;
+}
+.pagePill{
+  font-size:0.8rem;font-weight:600;color:var(--mute);
+  background:var(--surface);padding:6px 14px;border-radius:999px;
+  border:1px solid var(--border);
+}
+.pagePill b{color:#fff}
+.downloadBtn{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:0.8rem;font-weight:600;color:#000;
+  background:linear-gradient(135deg, #fde047 0%, #eab308 50%, #ca8a04 100%);
+  text-decoration:none;padding:7px 16px;border-radius:999px;
+  box-shadow:0 2px 10px rgba(234,179,8,0.3);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.downloadBtn:hover{
+  transform:translateY(-1px);
+  box-shadow:0 4px 16px rgba(234,179,8,0.5);
+}
+
+/* Reader Viewport */
+.readerView{
+  flex:1;display:flex;flex-direction:column;align-items:center;
+  padding:32px 16px 80px;gap:28px;
+  max-width:960px;margin-inline:auto;width:100%;
+}
+.pageCard{
+  position:relative;width:100%;max-width:820px;
+  background:#05070a;border-radius:16px;overflow:hidden;
+  box-shadow:0 20px 50px rgba(0,0,0,0.6), 0 0 0 1px var(--border);
+  transition:transform .3s ease;
+}
+.pageCard:hover{
+  transform:scale(1.008);
+}
+.pageCard img{
+  width:100%;height:auto;display:block;
+  image-rendering:-webkit-optimize-contrast;
+}
+.pageTag{
+  position:absolute;bottom:14px;right:14px;
+  font-size:0.72rem;font-weight:600;color:#fff;
+  background:rgba(0,0,0,0.7);padding:4px 10px;border-radius:999px;
+  backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.15);
+}
+
+/* Floating Controls */
+.floatNav{
+  position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+  display:flex;align-items:center;gap:8px;
+  padding:6px 10px;border-radius:999px;
+  background:rgba(21,25,34,0.92);
+  backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,0.16);
+  box-shadow:0 12px 30px rgba(0,0,0,0.5);
+  z-index:40;
+}
+.floatNav button{
+  background:none;border:none;color:var(--text);
+  padding:8px 14px;border-radius:999px;font-size:0.8rem;font-weight:600;
+  cursor:pointer;display:inline-flex;align-items:center;gap:6px;
+  transition:background .2s ease;
+}
+.floatNav button:hover{background:rgba(255,255,255,0.1)}
+
+@media(max-width:640px){
+  .menuHeader{padding:10px 14px}
+  .brandText p{display:none}
+  .pagePill{display:none}
+  .readerView{padding:16px 8px 70px;gap:18px}
+  .pageCard{border-radius:10px}
+}
+</style>
+</head>
+<body>
+
+<header class="menuHeader">
+  <div class="brandTitle">
+    <div class="brandBadge">D</div>
+    <div class="brandText">
+      <h1>Dawat-e-Kashmir</h1>
+      <p>Traditional Wazwan &middot; Brand Creative Menu</p>
+    </div>
+  </div>
+
+  <div class="menuNavActions">
+    <span class="pagePill">8 Pages &middot; Full High-Res Spread</span>
+    <a href="dawat-e-kashmir-menu.pdf" download="dawat-e-kashmir-menu.pdf" class="downloadBtn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+      <span>PDF (7 MB)</span>
+    </a>
+  </div>
+</header>
+
+<main class="readerView">
+  <article class="pageCard" id="p1">
+    <img src="images/dawat-pages/page-1.webp" alt="Dawat-e-Kashmir Menu Cover" loading="eager" width="1650" height="2329">
+    <span class="pageTag">Cover</span>
+  </article>
+
+  <article class="pageCard" id="p2">
+    <img src="images/dawat-pages/page-2.webp" alt="Our Story - Kashmiri Wazwan Tradition" loading="lazy" width="1650" height="2329">
+    <span class="pageTag">Our Story</span>
+  </article>
+
+  <article class="pageCard" id="p3">
+    <img src="images/dawat-pages/page-3.webp" alt="Food Menu - Kashmiri Appetizers & Signatures" loading="lazy" width="1650" height="2329">
+    <span class="pageTag">Appetizers &amp; Signatures</span>
+  </article>
+
+  <article class="pageCard" id="p4">
+    <img src="images/dawat-pages/page-4.webp" alt="Wazwan Curries & Traditional Courses" loading="lazy" width="1650" height="2329">
+    <span class="pageTag">Wazwan Specialties</span>
+  </article>
+
+  <article class="pageCard" id="p5">
+    <img src="images/dawat-pages/page-5.webp" alt="Breads, Rice & Accompaniments" loading="lazy" width="1650" height="2329">
+    <span class="pageTag">Breads &amp; Rice</span>
+  </article>
+
+  <article class="pageCard" id="p6">
+    <img src="images/dawat-pages/page-6.webp" alt="Desserts & Beverages - Kahwa" loading="lazy" width="1650" height="2329">
+    <span class="pageTag">Desserts &amp; Kahwa</span>
+  </article>
+
+  <article class="pageCard" id="p7">
+    <img src="images/dawat-pages/page-7.webp" alt="Dining Experience & Ambience" loading="lazy" width="1650" height="2329">
+    <span class="pageTag">Experience</span>
+  </article>
+
+  <article class="pageCard" id="p8">
+    <img src="images/dawat-pages/page-8.webp" alt="Dawat-e-Kashmir Back Cover & Information" loading="lazy" width="1650" height="2329">
+    <span class="pageTag">Back Cover</span>
+  </article>
+</main>
+
+<div class="floatNav">
+  <button type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})">&uarr; Top</button>
+  <button type="button" onclick="document.getElementById('p3').scrollIntoView({behavior:'smooth'})">Menu Items</button>
+  <button type="button" onclick="document.getElementById('p8').scrollIntoView({behavior:'smooth'})">&darr; End</button>
+</div>
+
+</body>
+</html>

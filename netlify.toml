@@ -1,0 +1,64 @@
+[build]
+  publish = "."
+
+# ---- clean URLs for the in-page sections (shareable + crawlable) ----
+[[redirects]]
+  from = "/careers"
+  to = "/#careers"
+  status = 301
+
+[[redirects]]
+  from = "/careers/"
+  to = "/#careers"
+  status = 301
+
+[[redirects]]
+  from = "/process"
+  to = "/#process"
+  status = 301
+
+[[redirects]]
+  from = "/our-process"
+  to = "/#process"
+  status = 301
+
+[[redirects]]
+  from = "/services"
+  to = "/#f-services"
+  status = 301
+
+[[redirects]]
+  from = "/contact"
+  to = "/#f-apex"
+  status = 301
+
+# ---- caching ----
+[[headers]]
+  for = "/frames/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Access-Control-Allow-Origin = "*"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+    Content-Type = "application/xml; charset=utf-8"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"

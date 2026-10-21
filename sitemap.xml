@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://workovia.in/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image><image:loc>https://workovia.in/images/og-workovia.png</image:loc><image:title>Workovia — integrated business solutions</image:title></image:image>
+    <image:image><image:loc>https://workovia.in/images/brand-creatives-content-smm.png</image:loc><image:title>Brand Creatives Content &amp; SMM</image:title></image:image>
+    <image:image><image:loc>https://workovia.in/images/website-seo.png</image:loc><image:title>Website &amp; SEO</image:title></image:image>
+    <image:image><image:loc>https://workovia.in/images/ads-performance-marketing.png</image:loc><image:title>Ads &amp; Performance Marketing</image:title></image:image>
+    <image:image><image:loc>https://workovia.in/images/sales-lead-handling.png</image:loc><image:title>Sales &amp; Lead Handling</image:title></image:image>
+    <image:image><image:loc>https://workovia.in/images/business-operations.png</image:loc><image:title>Business Operations</image:title></image:image>
+    <image:image><image:loc>https://workovia.in/images/business-analytics.png</image:loc><image:title>Business Analytics</image:title></image:image>
+    <image:image><image:loc>https://workovia.in/images/ai-automation.png</image:loc><image:title>AI Automation</image:title></image:image>
+  </url>
+  <url><loc>https://workovia.in/dawat-menu.html</loc><lastmod>2026-10-21</lastmod><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://workovia.in/dawat-chinese-menu.html</loc><lastmod>2026-10-21</lastmod><changefreq>monthly</changefreq><priority>0.3</priority></url>
+</urlset>
