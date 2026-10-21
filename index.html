@@ -4777,6 +4777,11 @@ function applyProfile(tier) {
     if (SLOW_NET)     CONFIG.FRAME_STRIDE = Math.max(CONFIG.FRAME_STRIDE, 4);  // 2G/3G or < 1.2 Mbps: a quarter of the film (15/scene)
     else if (MID_NET) CONFIG.FRAME_STRIDE = Math.max(CONFIG.FRAME_STRIDE, 2);  // 1.2–3 Mbps: half the film (30/scene)
   }
+  if (MID_NET) {
+    CONFIG.AHEAD = Math.min(CONFIG.AHEAD, 16); CONFIG.BEHIND = Math.min(CONFIG.BEHIND, 4);
+    CONFIG.NEXT_SECTION_COUNT = Math.min(CONFIG.NEXT_SECTION_COUNT, 8);
+    CONFIG.CONCURRENCY = Math.min(CONFIG.CONCURRENCY, 4); CONFIG.INITIAL_FRAMES = Math.min(CONFIG.INITIAL_FRAMES, 8);
+  }
   document.body.classList.toggle("perf-lite", PROFILE.lite);
   document.body.classList.toggle("perf-mid", PROFILE.mid);
   document.body.dataset.tier = tier;
@@ -4902,7 +4907,7 @@ function request(idx, priority) {
   if (prev === undefined || priority < prev) queue.set(idx, priority);
   pump();
 }
-const BG_CONCURRENCY = (typeof MID_NET !== "undefined" && MID_NET) ? 2 : 3;   // background (priority >= 500) frames share the line politely
+const BG_CONCURRENCY = 1;   // background (priority >= 500) frames use a single connection: every image on the page outranks them
 function pump() {
   while (active < CONFIG.CONCURRENCY && queue.size) {
     let bestIdx = -1, bestPri = Infinity;
@@ -4922,6 +4927,7 @@ function load(idx, attempt, priority) {
   img.decoding = "async";
   // the frame under the playhead outranks the ones it might need later
   if ("fetchPriority" in img) img.fetchPriority = (priority | 0) <= 2 ? "high" : "low";
+  if ("loading" in img && (priority | 0) >= 500) img.loading = "eager";   // explicit, so the browser never defers a prefetch forever
   inflight.set(idx, img);
   const done = () => { inflight.delete(idx); active--; pump(); };
   img.onload = () => {
@@ -4970,9 +4976,9 @@ function noteSourceAspect(a) {
      2G/3G/Data-Saver : off (window-only loading, as before)
    ?prefetch=0 turns it off for testing.
    -------------------------------------------------------------------------- */
-const PREFETCH = { on:false, decodeAll:false, warmed:new Set(), active:0, max:3 };
+const PREFETCH = { on:false, decodeAll:false, warmed:new Set(), active:0, max:1 };
 function startPrefetch() {
-  if (PREFETCH.on || !TOTAL || SLOW_NET || qs.get("prefetch") === "0") return;
+  if (PREFETCH.on || !TOTAL || SLOW_NET || MID_NET || qs.get("prefetch") === "0") return;
   PREFETCH.on = true;
   PREFETCH.decodeAll = !PROFILE.lite;
   if (PREFETCH.decodeAll) {
@@ -7033,7 +7039,7 @@ async function start() {
     lastScheduled = -1; wake();
     // then the rest of the film streams in quietly — after the page's own
     // assets have landed, so it never competes with the first paint
-    const go = () => setTimeout(startPrefetch, 600);
+    const go = () => setTimeout(startPrefetch, 3000);
     if (document.readyState === "complete") go(); else window.addEventListener("load", go, { once:true });
   });
 
